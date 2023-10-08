@@ -2,6 +2,8 @@
 
 if(!class_exists("Funciones")){
     include("funciones.php");
+   // echo "La clase Funciones se ha cargado correctamente.";
+
 }
 
 class Conexion{
@@ -49,6 +51,7 @@ class Conexion{
 
         public function ejecutarConsulta($sql){
             $resultado = $this->conexion->query($sql);
+            //var_dump($sql);
         
             if ($resultado) {
                 return $resultado;
@@ -70,4 +73,18 @@ class Conexion{
     // teste para saber si se establece la conexion y en casa contrario muestra el error en la carpeta logs
     $conexion = new Conexion('../logs/');
     $conexion->conectar();
-    $conexion->ejecutarConsulta("SELECT * FROM usuarios");
+    $resultado = $conexion->ejecutarConsulta("SELECT * FROM usuarios");
+   // print_r($resultado);
+
+    /*
+    if($resultado->num_rows > 0){
+        echo "<pre>";
+        foreach($resultado as $fila){
+            print_r($fila);
+        }
+        echo "</pre>";
+    }
+
+$resultado = $conexion->ejecutarConsulta("UPDATE usuarios SET contrasena = '123456'");
+print_r($resultado);
+*/

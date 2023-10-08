@@ -91,6 +91,8 @@ if ($conexion->conectar()) {
     // Puedes agregar más manejo de errores aquí si es necesario
     echo "Error en la conexión. Verifica el archivo de logs para más detalles.";
 }
+error_reporting(E_ALL);
+ini_set('display_errors', 'on');
 
 ?>
 
