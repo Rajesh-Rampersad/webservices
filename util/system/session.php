@@ -42,16 +42,16 @@
  }
 
 
-//  $session = new Session();
+ $session = new Session();
 
-//  if(!$session->checkSession()){
-//     $session->createSession(
-//         array(
-//             'usuario' => 'admin',
-//             'nombre'  => 'Administrador'
-//         )
-//     );
-//  }
-// $session->endSession();
+ if(!$session->checkSession()){
+    $session->createSession(
+        array(
+            'usuario' => 'admin',
+            'nombre'  => 'Administrador'
+        )
+    );
+ }
+$session->endSession();
 
-//  print_r($_SESSION);
+ print_r($_SESSION);

@@ -74,7 +74,7 @@ class Conexion{
     $conexion = new Conexion('../logs/');
     $conexion->conectar();
     $resultado = $conexion->ejecutarConsulta("SELECT * FROM usuarios");
-   // print_r($resultado);
+   //print_r($resultado);
 
     /*
     if($resultado->num_rows > 0){
