@@ -51,7 +51,7 @@ class Conexion{
 
         public function ejecutarConsulta($sql){
             $resultado = $this->conexion->query($sql);
-            //var_dump($sql);
+           // var_dump($sql);
         
             if ($resultado) {
                 return $resultado;
@@ -74,17 +74,16 @@ class Conexion{
     $conexion = new Conexion('../logs/');
     $conexion->conectar();
     $resultado = $conexion->ejecutarConsulta("SELECT * FROM usuarios");
-   //print_r($resultado);
+ //  print_r($conexion);
 
-    /*
-    if($resultado->num_rows > 0){
-        echo "<pre>";
-        foreach($resultado as $fila){
-            print_r($fila);
-        }
-        echo "</pre>";
-    }
+    
+//     if($resultado->num_rows > 0){
+//         echo "<pre>";
+//         foreach($resultado as $fila){
+//             print_r($fila);
+//         }
+//         echo "</pre>";
+//     }
 
-$resultado = $conexion->ejecutarConsulta("UPDATE usuarios SET contrasena = '123456'");
-print_r($resultado);
-*/
+// $resultado = $conexion->ejecutarConsulta("UPDATE usuarios SET contrasena = '123456'");
+// print_r($resultado);

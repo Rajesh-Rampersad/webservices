@@ -13,6 +13,7 @@ class Funciones{
         $mi_archivo = fopen($carpeta.$nombre_archivo.'.txt', "a") or die("Archivo inaccesible!");
         fwrite($mi_archivo,"Fecha: ". date(DATE_RFC822).'>>>'.$descripcion."\r\n");
         fclose($mi_archivo);
+      
     }
 
     public static function ObtenerIp() {
@@ -32,10 +33,12 @@ class Funciones{
             $ipaddress = getenv('REMOTE_ADDR');
         }else{
             $ipaddress = 'UNKNOWN';
+            
         }
 
     
         return $ipaddress;
+       
     }
 
     public static function ObtenerNavegador($useragent) {
@@ -74,3 +77,5 @@ class Funciones{
 }
 
 // Funciones::Logs("test", "../logs/", "Este es un mensaje de prueba");
+//  echo Funciones::ObtenerIP();
+//  echo Funciones::ObtenerNavegador($_SERVER['HTTP_USER_AGENT']);

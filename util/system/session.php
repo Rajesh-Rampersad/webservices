@@ -17,6 +17,7 @@
             isset($_SESSION['usuario']) && !empty($_SESSION['usuario'])
         ){
             $ckeck = true;
+        
         }
 
         return $ckeck;
@@ -54,4 +55,6 @@
  }
 $session->endSession();
 
- print_r($_SESSION);
+//print_r($_SESSION);
+
+

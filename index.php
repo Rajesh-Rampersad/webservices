@@ -37,12 +37,11 @@ if ($session->checkSession() ) {
         
         
         $fechaGuardada = $_SESSION['fechaSesion'];
-        echo '<pre>';
-        print_r($fechaGuardada);
-        echo '</pre>';
-        $ahora = date('Y-,-d H:i:s');
-
+        
+        $ahora = date('Y-m-d H:i:s');
+      
         $tiempo_transcurrido = (strtotime($ahora)- strtotime($fechaGuardada));
+      
 
         if($tiempo_transcurrido >= ($parametro['timeout'] * 60)){
 
@@ -50,12 +49,12 @@ if ($session->checkSession() ) {
             header("Refresh:0");
             exit();
         }else {
-            $_SESSION['fechaSesion'] = date('Y-,-d H:i:s');
+            $_SESSION['fechaSesion'] = date('Y-m-d H:i:s');
         }
 
      
     }else{
-        $_SESSION['fechaSesion'] = date('Y-,-d H:i:s');
+        $_SESSION['fechaSesion'] = date('Y-m-d H:i:s');
     }
 
     //URL POR DEFECTO
@@ -63,7 +62,10 @@ if ($session->checkSession() ) {
 
     if(isset($_GET['pagina']) && !empty($_GET['pagina']) ){
         $pagina = $_GET['pagina'];
+        
+       
     }
+  
     // Traer los permisos de la pagina para el usuario
 
     $resultado_permisos = $conexion->ejecutarConsulta("
@@ -75,9 +77,12 @@ if ($session->checkSession() ) {
     AND b.estado = 'ACTIVO'
 ");
 
+
 $varAcceso = array();
 
 foreach ($resultado_permisos as $fila) {
+
+    
     $varAcceso['idmenu'] = $fila['idmenu'];
     $varAcceso['nombre'] = $fila['nombre'];
     $varAcceso['ventena'] = $fila['ventana'];
@@ -88,6 +93,7 @@ foreach ($resultado_permisos as $fila) {
 
 if (count($varAcceso) == 0 ){
     $flagAccPagina = false;
+   
 
     $resultadoAccpagina = $conexion->ejecutarConsulta("
         SELECT a.ventana
@@ -98,7 +104,7 @@ if (count($varAcceso) == 0 ){
         AND a.es_menu = 'NO'
         ORDER BY a.idpadre, a.orden LIMIT 1
     ");
-
+    print_r( $resultadoAccpagina);
     foreach ($resultadoAccpagina as $fila) {
         $pagina = $fila['ventana'];
         $flagAccPagina = true;
@@ -141,11 +147,10 @@ if( count($varAcceso) > 0 ){
 }
 
 
-echo "<pre>";
-print_r($varAcceso);
-echo "</pre>";
+
     #  se usa para hacer test  en pantalla print_r($_SESSION['fechaSesion']);
 }else{
     #Si no hay una sesion iniciada, mostramos el login del sistema
     include('inc/login.php');
 }
+
