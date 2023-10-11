@@ -1,6 +1,6 @@
 <?php
 
-include("ession.php");
+include("session.php");
 
 $session = new Session();
 $session->endSession();

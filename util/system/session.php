@@ -1,60 +1,61 @@
 <?php
 
- class Session{
-
+class Session{
 
     private $codSession = "pedidos";
 
-    public function __construct(){
-       session_name($this->codSession);
-       session_start();
+    public function __construct()
+    {
+        session_name($this->codSession);
+        session_start();
     }
 
     public function checkSession(){
-        $ckeck = false;
+        $check = false;
 
         if(
-            isset($_SESSION['usuario']) && !empty($_SESSION['usuario'])
+            isset($_SESSION['usuario']) && 
+            !empty($_SESSION['usuario'])
         ){
-            $ckeck = true;
-        
+            $check = true;
         }
 
-        return $ckeck;
+        return $check;
     }
 
-    public function createSession(array $datos){
-       $_SESSION = array();
+    public function createSession( array $datos ){
+        $_SESSION = array();
 
-       $_SESSION['usuario'] = $datos['usuario'];
-       $_SESSION['nombre'] = $datos['nombre'];
+        $_SESSION['usuario'] = $datos['usuario'];
+        $_SESSION['nombre'] = $datos['nombre'];
     }
 
     public function endSession(){
         $_SESSION = array();
 
-        if(ini_get("session.use_cookies")){
+        if (ini_get("session.use_cookies")) {
             $params = session_get_cookie_params();
-            setcookie(session_name(), '', time() - 42000, $params["path"], $params["domain"],$params["secure"],
-            $params["httponly"]);
+            setcookie(session_name(), '', time() - 42000,$params["path"], $params["domain"],$params["secure"], $params["httponly"]);
         }
+
         session_destroy();
     }
- }
 
+}
 
- $session = new Session();
+/*
+$session = new Session();
 
- if(!$session->checkSession()){
+if( !$session->checkSession() ){
     $session->createSession(
         array(
-            'usuario' => 'admin',
-            'nombre'  => 'Administrador'
+            'usuario' => 'test',
+            'nombre' => 'Pepe'
         )
     );
- }
+}
+
 $session->endSession();
 
-//print_r($_SESSION);
-
-
+print_r($_SESSION);
+*/

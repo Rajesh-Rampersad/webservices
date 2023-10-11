@@ -13,49 +13,53 @@ $respuesta = new stdClass();
 $respuesta->estado = 1;
 $respuesta->mensaje = "";
 
-try {
+try{
 
     $usuario = "";
-    $contrasena = "";
+    $clave = "";
 
-    if (
-        (isset($_POST['usuario']) && !empty($_POST['usuario']) ) &&
-        (isset($_POST['contrasena']) && !empty($_POST['contrasena']) )
-    ) {
+    if(
+        ( isset($_POST['usuario']) && !empty($_POST['usuario']) ) && 
+        ( isset($_POST['clave']) && !empty($_POST['clave']) )
+    ){
         $usuario = $_POST['usuario'];
-        $contrasena = $_POST['contrasena'];
+        $clave = $_POST['clave'];
     }
 
-    if (
-        empty($usuario) || empty($contrasena)
-    ) {
-        throw new Exception("El usuario o la contraseña estan vacios");
+    if(
+        empty($usuario) || empty($clave)
+    ){
+        throw new Exception("El usuario o la clave estan vacios");
     }
 
     $datos_usuario = array();
-    $contrasena_cifrada = hash("sha512", "m7x".$contrasena);
 
-    $resultado = $conexion->ejecutarConsulta("SELECT * FROM usuarios
-    WHERE usuario = '".$usuario."' AND contrasena = '".$contrasena."'
-    LIMIT 1
+    $clave_cifrada = hash("sha512", "m7x".$clave);
+
+    $resultado = $conexion->ejecutarConsulta("
+        SELECT * FROM usuarios
+        WHERE usuario = '".$usuario."'
+        AND clave = '".$clave_cifrada."'
+        LIMIT 1
     ");
 
-    foreach ($resultado as $fila) {
-        $dato_usuario = $fila;
+    foreach($resultado as $fila){
+        $datos_usuario = $fila;
     }
 
+    //$datos_usuario['tipo_usuario'];
 
-    if (
+    if(
         count($datos_usuario) == 0
-    ) {
-        throw new Exception("El usuario no existe en la aplicación, o la contraseña es invalida");
+    ){
+        throw new Exception("El usuario no existe en la aplicación, o la clave es incorrecta");
     }
 
     $session->createSession($datos_usuario);
-    
-} catch (Exception $e) {
+
+}catch(Exception $e){
     $respuesta->estado = 2;
-    $respuesta->mensaje = $e-> getMessage();
+    $respuesta->mensaje = $e->getMessage();
 }
 
 print_r(json_encode($respuesta));
