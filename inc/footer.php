@@ -1,9 +1,9 @@
     </div>
     <footer class="text-right">
         <hr>
-        <p><strong>Desarrollado por System7x</strong></p>
+        <p><strong>Desarrollado por Neptuno</strong></p>
     </footer>
-</body>
+    </body>
 
     <?php
 
@@ -19,6 +19,9 @@
     }
 
     ?>
-    <script type="text/javascript" language="javascript" src="js/system.js?v=<?php echo $parametro['webversion']; ?>"></script>
-    <script type="text/javascript" language="javascript" src="js/<?php echo $pagina; ?>.js?v=<?php echo $parametro['webversion']; ?>"></script>
-</html>
+    <script type="text/javascript" language="javascript" src="js/system.js?v=<?php echo $parametro['webversion']; ?>">
+    </script>
+    <script type="text/javascript" language="javascript"
+        src="js/<?php echo $pagina; ?>.js?v=<?php echo $parametro['webversion']; ?>"></script>
+
+    </html>

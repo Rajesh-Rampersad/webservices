@@ -188,7 +188,7 @@ if( $session->checkSession() ){
             $conVecMenu++;
         }
     }
-
+  
     # Inlcusion de los archivos
 
     include('inc/header.php');
