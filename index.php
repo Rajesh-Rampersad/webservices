@@ -200,7 +200,10 @@ if( $session->checkSession() ){
             $conVecMenu++;
         }
     }
-  
+    // echo "<pre>";
+    // print_r($vectorMenu);
+    // echo "</pre>";
+    
     # Inlcusion de los archivos
 
     include('inc/header.php');

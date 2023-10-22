@@ -1,7 +1,7 @@
     </div>
     <footer class="text-right">
         <hr>
-        <p><strong>Desarrollado por System7x</strong></p>
+        <p><strong>Desarrollado por Neptuno. INC</strong></p>
     </footer>
 </body>
 
