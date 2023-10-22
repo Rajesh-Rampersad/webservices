@@ -71,17 +71,18 @@ $conexion->conectar();
 
 $resultado = $conexion->ejecutarConsulta("SELECT * FROM usuarios");
 
+/*
+print_r($resultado->num_rows);
 
-// print_r($resultado->num_rows);
+if( $resultado->num_rows > 0 ){
+    echo "<pre>";
+    foreach($resultado as $fila){
+        print_r($fila);
+    }
+    echo "</pre>";
+}
 
-// if( $resultado->num_rows > 0 ){
-//     echo "<pre>";
-//     foreach($resultado as $fila){
-//         print_r($fila);
-//     }
-//     echo "</pre>";
-// }
+$resultado = $conexion->ejecutarConsulta("UPDATE usuarios SET clave = '123'");
 
-// $resultado = $conexion->ejecutarConsulta("UPDATE usuarios SET clave = '123'");
-
-// print_r($resultado);
+print_r($resultado);
+*/
