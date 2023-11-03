@@ -1,15 +1,5 @@
 <?php
-/*=============================================
-Mostrar errores
-=============================================*/
-ini_set('display_errors', 1); // coloca 0 si no deseas que aparezcan los errores también en el navegador
-ini_set("log_errors", 1); // con esta línea estamos diciendo que queremos crear un nuevo archivo de errores
-ini_set("error_log",  "D:/xampp8/htdocs/errores/php_error_log"); // con esta línea le decimos a PHP donde queremos que se guarde ese archivo, lo recomendado es que sea al lado del archivo index.php
 
-/*=============================================
-FATAL ERROR
-Este tipo de errores aborta la ejecución del programa e interrumpe su completo funcionamiento. Ocurre, por ejemplo, cuando intentas ejecutar una función y no existe en tu código o intentas iniciar un objeto de una clase que aún no has declarado
-=============================================*/
 include("util/system/funciones.php");
 include("util/system/session.php");
 include("util/system/conexion.php");
@@ -48,18 +38,13 @@ if( $session->checkSession() ){
             $session->endSession();
             header("Refresh:0");
             exit();
-
         }else{
             $_SESSION['fechaSesion'] = date('Y-m-d H:i:s');
         }
-       
+
     }else{
         $_SESSION['fechaSesion'] = date('Y-m-d H:i:s');
     }
-
-    echo "<pre>";
-    print_r($_SESSION['fechaSesion']);
-    echo "</pre>";
 
     // URL por defecto
     $pagina = $parametro['paginadefecto'];
@@ -87,7 +72,7 @@ if( $session->checkSession() ){
         $varAcceso['ventana'] = $fila['ventana'];
         $varAcceso['framework'] = explode(",",$fila['framework']);
     }
-    
+
     # En caso de que el usuario no tenga permiso, verificamos en cual menu lo tiene
 
     if( count($varAcceso) == 0 ){
@@ -109,7 +94,7 @@ if( $session->checkSession() ){
             $pagina = $fila['ventana'];
             $flagAccPagina = true;
         }
-      
+
         if( $flagAccPagina == false ){
             $session->endSession();
             echo "Estimado, usted no tiene modulos asignados en el aplicativo, favor contactar con el administrador del sistema";
@@ -200,10 +185,7 @@ if( $session->checkSession() ){
             $conVecMenu++;
         }
     }
-    // echo "<pre>";
-    // print_r($vectorMenu);
-    // echo "</pre>";
-    
+
     # Inlcusion de los archivos
 
     include('inc/header.php');

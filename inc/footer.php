@@ -1,7 +1,7 @@
     </div>
     <footer class="text-right">
         <hr>
-        <p><strong>Desarrollado por Neptuno. INC</strong></p>
+        <p><strong>Desarrollado por System7x</strong></p>
     </footer>
 </body>
 
@@ -14,6 +14,17 @@
                 break;
             case 'bootstrap';
                 echo '<script type="text/javascript" language="javascript" src="lib/css/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>';
+                break;
+            case 'jquery-treeview';
+                echo '<script type="text/javascript" language="javascript" src="lib/js/jquery-treeview-master/jquery.treeview.js"></script>';
+                break;
+            case 'chosen';
+                echo '<script type="text/javascript" language="javascript" src="lib/js/chosen_v1.8.7/chosen.jquery.min.js"></script>';
+                break;
+            case 'highcharts';
+                echo '<script type="text/javascript" language="javascript" src="lib/js/Highcharts-7.0.0/code/highcharts.js"></script>';
+                echo '<script type="text/javascript" language="javascript" src="lib/js/Highcharts-7.0.0/code/modules/exporting.js"></script>';
+                echo '<script type="text/javascript" language="javascript" src="lib/js/Highcharts-7.0.0/code/modules/export-data.js"></script>';
                 break;
         }
     }

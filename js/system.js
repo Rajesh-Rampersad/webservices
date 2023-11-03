@@ -1,11 +1,19 @@
 function logoutSession(){
     document.location = 'util/system/logout.php';
-} 
-
-// console.log('System JS');
+}
 
 $(document).ready(function (){
     var param_timeout = $("#param_timeout").val();
 
-    setInterval(logoutSession, ( parseInt(param_timeout) * 3600 ));
+    setInterval(logoutSession, ( parseInt(param_timeout) * 60000 ));
+
+    if( typeof Highcharts !== 'undefined' ){
+        Highcharts.setOptions({
+            lang: {
+                printChart: "Imprimir",
+                downloadCSV: "Descargar CSV"
+            }
+        });
+    }
+
 });

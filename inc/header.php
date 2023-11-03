@@ -15,6 +15,16 @@
                 echo '<link href="lib/css/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>';
                 echo '<link href="lib/css/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css"/>';
             break;
+
+            case 'jquery-treeview';
+                echo '<link href="lib/js/jquery-treeview-master/jquery.treeview.css" rel="stylesheet" type="text/css"/>';
+            break;
+            
+            case 'chosen';
+                echo '<link href="lib/js/chosen_v1.8.7/chosen.min.css" rel="stylesheet" type="text/css"/>';
+            break;
+
+            
         }
     }
 
