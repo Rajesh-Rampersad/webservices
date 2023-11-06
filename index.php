@@ -38,16 +38,13 @@ if( $session->checkSession() ){
             $session->endSession();
             header("Refresh:0");
             exit();
-
         }else{
             $_SESSION['fechaSesion'] = date('Y-m-d H:i:s');
         }
-       
+
     }else{
         $_SESSION['fechaSesion'] = date('Y-m-d H:i:s');
     }
-
-    
 
     // URL por defecto
     $pagina = $parametro['paginadefecto'];
@@ -75,7 +72,7 @@ if( $session->checkSession() ){
         $varAcceso['ventana'] = $fila['ventana'];
         $varAcceso['framework'] = explode(",",$fila['framework']);
     }
-    
+
     # En caso de que el usuario no tenga permiso, verificamos en cual menu lo tiene
 
     if( count($varAcceso) == 0 ){
@@ -97,7 +94,7 @@ if( $session->checkSession() ){
             $pagina = $fila['ventana'];
             $flagAccPagina = true;
         }
-      
+
         if( $flagAccPagina == false ){
             $session->endSession();
             echo "Estimado, usted no tiene modulos asignados en el aplicativo, favor contactar con el administrador del sistema";
@@ -188,7 +185,7 @@ if( $session->checkSession() ){
             $conVecMenu++;
         }
     }
-  
+
     # Inlcusion de los archivos
 
     include('inc/header.php');
