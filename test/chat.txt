@@ -1,0 +1,90 @@
+===============================================================================================================
+
+			Ejemplo de chat a  desarrollar
+
+===============================================================================================================
+
+¡Por supuesto! Aquí te presento algunas preguntas que podrías incluir en tus chatbots de ventas, atención al cliente, reservas, seguimiento de pedidos y encuestas:
+
+Chatbot de ventas:
+
+¿Estás buscando algún producto en particular?
+¿Qué tipo de producto estás buscando?
+¿Cuál es tu presupuesto para este producto?
+¿Tienes alguna preferencia en cuanto a la marca o modelo?
+¿Te gustaría ver las opciones más populares o los productos más vendidos?
+¿Te gustaría ver algunas promociones o descuentos disponibles?
+¿Necesitas ayuda para completar tu compra?
+
+
+Chatbot de atención al cliente:
+
+¿En qué puedo ayudarte hoy?
+¿Tienes alguna pregunta sobre nuestros productos o servicios?
+¿Necesitas ayuda para realizar una reserva o una compra?
+¿Tienes algún problema o incidencia que podamos solucionar?
+¿Quieres hablar con un agente humano para obtener más ayuda?
+
+
+
+Chatbot de reservas:
+¿En qué servicio estás interesado en reservar?
+¿En qué fecha te gustaría hacer la reserva?
+¿A qué hora te gustaría hacer la reserva?
+¿Cuántas personas serán parte de la reserva?
+¿Hay algún requisito especial que debamos saber?
+¿Te gustaría recibir una confirmación por correo electrónico o mensaje de texto?
+
+
+
+Chatbot de seguimiento de pedidos:
+
+¿Cuál es tu número de pedido?
+¿En qué etapa del proceso de envío se encuentra tu pedido?
+¿Qué día se espera que llegue tu pedido?
+¿Necesitas realizar algún cambio en tu pedido?
+¿Tienes alguna pregunta sobre el envío o la entrega de tu pedido?
+
+
+
+Chatbot de encuestas:
+
+¿Cómo calificarías tu experiencia de compra?
+¿Qué piensas de nuestros productos o servicios?
+¿Te gustaría dejar algún comentario o sugerencia?
+¿Volverías a comprar nuestros productos o servicios?
+¿Cómo nos enteraste de nuestros productos o servicios?
+
+Recuerda que estas son solo algunas ideas de preguntas que podrías incluir en tus chatbots. Lo más importante es personalizar tus preguntas para que se ajusten a las necesidades y objetivos de tu negocio y de tus clientes.
+
+=================================================================================
+
+tienda de perfume
+=================================================================================Por supuesto, aquí hay algunas preguntas que podrías hacer a los prospectos de clientes en el chatbot de la tienda de perfumes:
+
+¿Estás buscando un perfume en particular o solo quieres explorar nuestras opciones?
+¿Prefieres un aroma floral, frutal, amaderado o fresco?
+¿Buscas un perfume para ti mismo/a o para regalar?
+¿Te gustan los perfumes fuertes o suaves?
+¿Tienes alguna marca favorita de perfume?
+¿Te gustaría recibir recomendaciones de perfumes populares?
+¿Cuál es tu presupuesto para un perfume?
+¿Tienes alguna pregunta o duda sobre algún perfume en particular?
+¿Deseas recibir promociones o descuentos exclusivos en nuestra tienda?
+
+En cuanto a las posibles interacciones, aquí hay algunas opciones:
+
+Proporcionar información detallada sobre los perfumes disponibles.
+Ayudar a los clientes a encontrar el perfume adecuado para ellos según sus preferencias y necesidades.
+Ofrecer recomendaciones personalizadas de perfumes basadas en la información proporcionada por el cliente.
+Permitir a los clientes realizar compras directamente a través del chatbot.
+Brindar atención al cliente y soporte postventa, como seguimiento de pedidos y resolución de problemas.
+Solicitar comentarios de los clientes sobre la experiencia de compra y sugerencias para mejorar el servicio.
+Enviar notificaciones o promociones personalizadas a los clientes que han interactuado con el chatbot.
+Espero que esto te sea de ayuda para empezar a crear tu chatbot de la tienda de perfumes. ¡Buena suerte!
+
+
+
+========================================================================
+LA44 W3SK CXJJ JFKX 8HL9 DSRH CWMJ 2RR9
+
