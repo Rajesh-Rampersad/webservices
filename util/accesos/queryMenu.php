@@ -21,36 +21,34 @@ try{
         SELECT idmenu, nombre FROM menu
         WHERE es_menu = 'SI'
         AND estado = 'ACTIVO'
-        ORDER BY  orden
+        ORDER BY orden
     ");
 
-    $count = 0;
- 
+    $cont = 0;
+
     foreach($resultado as $fila){
-        $respuesta->data[$count]["idmenu"] = $fila["idmenu"];
-        $respuesta->data[$count]["nombre"] = $fila["nombre"];
-        $respuesta->data[$count]["submenu"] = array();
+        $respuesta->data[$cont]['idmenu'] = $fila['idmenu'];
+        $respuesta->data[$cont]['nombre'] = $fila['nombre'];
+        $respuesta->data[$cont]['submenu'] = array();
 
         $resultadoInt = $conexion->ejecutarConsulta("
-        SELECT idmenu, nombre FROM menu
-        WHERE idpadre = '".$fila["idmenu"]."'
-        AND estado = 'ACTIVO'
-        ORDER BY  orden
-    ");
+            SELECT idmenu, nombre FROM menu
+            WHERE idpadre = '".$fila['idmenu']."'
+            AND estado = 'ACTIVO'
+            ORDER BY orden
+        ");
 
-        $countInt = 0;
+        $contInt = 0;
 
         foreach($resultadoInt as $filaInt){
-            $respuesta->data[$count]["submenu"][$countInt]["idmenu"] = $filaInt["idmenu"];
-            $respuesta->data[$count]["submenu"][$countInt]["nombre"] = $filaInt["nombre"];
-            
+            $respuesta->data[$cont]['submenu'][$contInt]['idmenu'] = $filaInt['idmenu'];
+            $respuesta->data[$cont]['submenu'][$contInt]['nombre'] = $filaInt['nombre'];
+
+            $contInt++;
         }
-        
-        count++;
 
+        $cont++;
     }
-        
-
 
 }catch(Exception $e){
     $respuesta->estado = 2;

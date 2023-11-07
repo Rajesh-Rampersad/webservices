@@ -16,13 +16,13 @@ class Conexion {
     public function __construct($logs) {
         $this->baseDatos = 'pedidos';
         $this->servidor = 'localhost';
-        $this->usuario = "root";
-        $this->contrasena = "";
-        $this->puerto = "3306";
+        $this->usuario = "postgres"; // Cambia esto al nombre de usuario de PostgreSQL
+        $this->contrasena = ""; // Cambia esto a la contraseña de PostgreSQL
+        $this->puerto = "5432"; // Puerto predeterminado de PostgreSQL
         $this->logs = $logs;
     }
 
-    public function parametros($baseDatos, $usuario, $contrasena, $servidor, $puerto = 3306) {
+    public function parametros($baseDatos, $usuario, $contrasena, $servidor, $puerto = 5432) {
         $this->baseDatos = $baseDatos;
         $this->usuario = $usuario;
         $this->contrasena = $contrasena;
@@ -31,15 +31,13 @@ class Conexion {
     }
 
     public function conectar() {
-        $mysqli = new mysqli($this->servidor, $this->usuario, $this->contrasena, $this->baseDatos, $this->puerto);
+        $this->conexion = pg_connect("host={$this->servidor} port={$this->puerto} dbname={$this->baseDatos} user={$this->usuario} password={$this->contrasena}");
 
-        if ($mysqli->connect_error) {
-            Funciones::Logs("ConexionDB", $this->logs, "Error de conexion: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error);
+        if (!$this->conexion) {
+            Funciones::Logs("ConexionDB", $this->logs, "Error de conexion: " . pg_last_error($this->conexion));
             $this->conexion = false;
             return false;
         } else {
-            $this->conexion = $mysqli;
-            $this->conexion->set_charset('utf8');
             return true;
         }
     }
@@ -51,19 +49,19 @@ class Conexion {
             return false;
         }
 
-        $resultado = $this->conexion->query($sql);
+        $resultado = pg_query($this->conexion, $sql);
 
         if ($resultado) {
             return $resultado;
         } else {
-            Funciones::Logs("ConsultaDB", $this->logs, "Error en el query (" . $this->conexion->error . ") " . $sql);
+            Funciones::Logs("ConsultaDB", $this->logs, "Error en el query (" . pg_last_error($this->conexion) . ") " . $sql);
             return false;
         }
     }
 
     public function __destruct() {
         if ($this->conexion) {
-            $this->conexion->close();
+            pg_close($this->conexion);
         }
     }
 }
@@ -91,10 +89,6 @@ if ($conexion->conectar()) {
     // Puedes agregar más manejo de errores aquí si es necesario
     echo "Error en la conexión. Verifica el archivo de logs para más detalles.";
 }
+
 error_reporting(E_ALL);
 ini_set('display_errors', 'on');
-
-?>
-
-
-

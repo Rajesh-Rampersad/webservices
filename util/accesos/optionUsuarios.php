@@ -20,15 +20,13 @@ try{
     $resultado = $conexion->ejecutarConsulta("
         SELECT * FROM usuarios
     ");
- 
+
     foreach($resultado as $fila){
         $respuesta->data[] = array(
-            "usuario"=> $fila["usuario"],
-            "nombre"=> $fila["nombre"]  
-
-        )}
-        
-
+            'usuario' => $fila['usuario'],
+            'nombre' => $fila['nombre']
+        );
+    }
 
 }catch(Exception $e){
     $respuesta->estado = 2;

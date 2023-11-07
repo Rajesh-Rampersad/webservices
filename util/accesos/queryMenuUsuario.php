@@ -17,24 +17,27 @@ try{
 
     if( !$session->checkSession() ) throw new Exception("Debe iniciar una sesión");
 
-    $resultado = $conexion->ejecutarConsulta("
-        SELECT COUNT(*) AS total, date(fecha) AS fecha
-        FROM log_menu
-        GROUP BY date(fecha)
-        ORDER BY fecha DESC
-        LIMIT 10
-    ");
+    $usuario = '';
 
-    $categories = array();
-    $data = array('name' => 'Visitas', 'data' => array());
-
-    foreach($resultado as $fila){
-        $categories[] = $fila['fecha'];
-        $data['data'][] = (int)$fila['total'];
+    if(
+        isset($_POST['usuario']) && !empty($_POST['usuario'])
+    ){
+        $usuario = $_POST['usuario'];
     }
 
-    $respuesta->data['categories'] = $categories;
-    $respuesta->data['series'][] = $data;
+    if( empty($usuario) ){
+        throw new Exception("El usuario esta vacio");
+    }
+
+    $resultado = $conexion->ejecutarConsulta("
+        SELECT idmenu
+        FROM usuarios_accesos
+        WHERE usuario = '".$usuario."'
+    ");
+
+    foreach($resultado as $fila){
+        $respuesta->data[] = $fila['idmenu'];
+    }
 
 }catch(Exception $e){
     $respuesta->estado = 2;
