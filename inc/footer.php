@@ -21,6 +21,9 @@
             case 'chosen';
                 echo '<script type="text/javascript" language="javascript" src="lib/js/chosen_v1.8.7/chosen.jquery.min.js"></script>';
                 break;
+            case 'datatables';
+                echo '<script type="text/javascript" language="javascript" src="lib/js/DataTables/DataTables-1.10.18/js/jquery.dataTables.min.js"></script>';
+                break;
             case 'highcharts';
                 echo '<script type="text/javascript" language="javascript" src="lib/js/Highcharts-7.0.0/code/highcharts.js"></script>';
                 echo '<script type="text/javascript" language="javascript" src="lib/js/Highcharts-7.0.0/code/modules/exporting.js"></script>';

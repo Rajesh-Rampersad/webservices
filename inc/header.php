@@ -21,6 +21,9 @@
             case 'chosen';
                 echo '<link href="lib/js/chosen_v1.8.7/chosen.min.css" rel="stylesheet" type="text/css"/>';
             break;
+            case 'datatables';
+                echo '<link href="lib/js/DataTables/DataTables-1.10.18/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>';
+            break;
         }
     }
 
