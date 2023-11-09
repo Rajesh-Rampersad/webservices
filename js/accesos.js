@@ -1,43 +1,43 @@
-function cargarOptionUsuarios() {
+function cargarOptionUsuarios(){
 
     $.ajax({
         type: "POST",
         url: "util/accesos/optionUsuarios.php",
         //data: {},
         dataType: 'json',
-        beforeSend: function () {
+        beforeSend: function(){
             $("#usuarios").empty();
         },
-        error: function (request, status, error) {
+        error: function(request, status, error){
             alert(request.responseText);
         },
-        success: function (respuesta) {
-            switch (respuesta.estado) {
+        success: function(respuesta){
+            switch(respuesta.estado){
                 case 1:
-
+                
                     //console.log(respuesta);
                     var opciones = respuesta.data;
 
-                    if (opciones.length > 0) {
-                        var opcSelect = '';
+                    if( opciones.length > 0 ){
+                         var opcSelect = '';
 
-                        for (var f = 0; f < opciones.length; f++) {
+                         for(var f = 0; f < opciones.length; f++ ){
                             opcSelect += '<option ';
-                            opcSelect += ' data-nombre="' + opciones[f]['nombre'] + '" ';
-                            opcSelect += ' value="' + opciones[f]['usuario'] + '" >';
-                            opcSelect += opciones[f]['usuario'] + ' - ' + opciones[f]['nombre'];
+                            opcSelect += ' data-nombre="'+opciones[f]['nombre']+'" ';
+                            opcSelect += ' value="'+opciones[f]['usuario']+'" >';
+                            opcSelect += opciones[f]['usuario']+' - '+opciones[f]['nombre'];
                             opcSelect += '</option>';
-                        }
+                         }
 
-                        $("#usuarios").html(opcSelect);
-                        $("#usuarios").trigger("chosen:updated");
+                         $("#usuarios").html(opcSelect);
+                         $("#usuarios").trigger("chosen:updated");
                     }
 
 
                     break;
                 case 2:
                     $('#myModalWarningBody').html(respuesta.mensaje);
-                    $('#myModalWarning').modal('show');
+                    $('#myModalWarning').modal('show');            
                     break;
                 default:
                     alert("Se ha producido un error");
@@ -48,39 +48,39 @@ function cargarOptionUsuarios() {
 
 }
 
-function cargarMenu() {
+function cargarMenu(){
 
     $.ajax({
         type: "POST",
         url: "util/accesos/queryMenu.php",
         //data: {},
         dataType: 'json',
-        beforeSend: function () {
+        beforeSend: function(){
             $("#sys_menu").empty();
         },
-        error: function (request, status, error) {
+        error: function(request, status, error){
             alert(request.responseText);
         },
-        success: function (respuesta) {
-            switch (respuesta.estado) {
+        success: function(respuesta){
+            switch(respuesta.estado){
                 case 1:
-
+                
                     //console.log(respuesta);
                     var menu = respuesta.data;
                     var sys_menu = '<ul id="myMenuPermisos">';
 
-                    for (var f = 0; f < menu.length; f++) {
+                    for(var f = 0; f < menu.length; f++ ){
                         sys_menu += '<li class="open">';
-                        sys_menu += '<input type="checkbox" id="menu_' + (f + 1) + '" value="' + menu[f]['idmenu'] + '" class="menu_sys">';
-                        sys_menu += '<label for="menu_' + (f + 1) + '">' + menu[f]['nombre'] + '</label>';
+                        sys_menu += '<input type="checkbox" id="menu_'+( f + 1 )+'" value="'+menu[f]['idmenu']+'" class="menu_sys">';
+                        sys_menu += '<label for="menu_'+( f + 1 )+'">'+menu[f]['nombre']+'</label>';
 
                         sys_menu += '<ul>';
                         var submenu = menu[f]['submenu'];
 
-                        for (var i = 0; i < submenu.length; i++) {
+                        for(var i = 0; i < submenu.length; i++ ){
                             sys_menu += '<li>';
-                            sys_menu += '<input type="checkbox" id="menu_' + (f + 1) + '_' + (i + 1) + '" value="' + submenu[i]['idmenu'] + '" class="menu_sys">';
-                            sys_menu += '<label for="menu_' + (f + 1) + '_' + (i + 1) + '">' + submenu[i]['nombre'] + '</label>';
+                            sys_menu += '<input type="checkbox" id="menu_'+( f + 1 )+'_'+( i + 1 )+'" value="'+submenu[i]['idmenu']+'" class="menu_sys">';
+                            sys_menu += '<label for="menu_'+( f + 1 )+'_'+( i + 1 )+'">'+submenu[i]['nombre']+'</label>';
                             sys_menu += '</li>';
                         }
 
@@ -96,14 +96,14 @@ function cargarMenu() {
                     break;
                 case 2:
                     $('#myModalWarningBody').html(respuesta.mensaje);
-                    $('#myModalWarning').modal('show');
+                    $('#myModalWarning').modal('show');            
                     break;
                 default:
                     alert("Se ha producido un error");
                     break;
             }
         },
-        complete: function () {
+        complete: function(){
             chekear();
 
             $("#myMenuPermisos").treeview({
@@ -117,9 +117,9 @@ function cargarMenu() {
 
 }
 
-function chekear() {
+function chekear(){
 
-    $('input[type="checkbox"]').change(function (e) {
+    $('input[type="checkbox"]').change(function(e) {
         var checked = $(this).prop("checked"),
             container = $(this).parent(),
             siblings = container.siblings();
@@ -133,7 +133,7 @@ function chekear() {
             var parent = el.parent().parent(),
                 all = true;
 
-            el.siblings().each(function () {
+            el.siblings().each(function() {
                 return all = ($(this).children('input[type="checkbox"]').prop("checked") === checked);
             });
 
@@ -159,64 +159,64 @@ function chekear() {
     });
 }
 
-function limpiarFormPermisos() {
+function limpiarFormPermisos(){
     $("#formGuardarPermisos").trigger("reset");
 
-    $('input[type="checkbox"]').each(function () {
-        $(this).prop({ checked: false });
-        $(this).prop({ indeterminate: false });
+    $('input[type="checkbox"]').each(function (){
+        $(this).prop({checked:false});
+        $(this).prop({indeterminate:false});
     });
 }
 
-function mostrarMenuUsuario(usuario) {
+function mostrarMenuUsuario(usuario){
 
     $.ajax({
         async: false,
         type: "POST",
         url: "util/accesos/queryMenuUsuario.php",
         data: {
-            usuario: usuario
+            usuario:usuario
         },
         dataType: 'json',
-        beforeSend: function () {
-            $('input[type="checkbox"]').each(function () {
-                $(this).prop({ checked: false });
-                $(this).prop({ indeterminate: false });
+        beforeSend: function(){
+            $('input[type="checkbox"]').each(function (){
+                $(this).prop({checked:false});
+                $(this).prop({indeterminate:false});
             });
         },
-        error: function (request, status, error) {
+        error: function(request, status, error){
             alert(request.responseText);
         },
-        success: function (respuesta) {
-            switch (respuesta.estado) {
+        success: function(respuesta){
+            switch(respuesta.estado){
                 case 1:
-
+                
                     //console.log(respuesta);
                     var menu = respuesta.data;
 
-                    if (menu.length > 0) {
+                    if( menu.length > 0 ){
 
-                        $(".menu_sys").each(function () {
+                        $(".menu_sys").each(function(){
                             var este_menu = this;
                             var valor = este_menu.value;
 
-                            for (var f = 0; f < menu.length; f++) {
-                                if (valor == menu[f]) {
-                                    $(este_menu).prop({ checked: true });
+                            for(var f=0; f < menu.length; f++){
+                                if(valor == menu[f]){
+                                    $(este_menu).prop({checked: true});
                                     break;
                                 }
                             }
                         });
 
-                    } else {
+                    }else{
                         $('#myModalWarningBody').html("El usuario no tiene permisos asignados");
-                        $('#myModalWarning').modal('show');
+                        $('#myModalWarning').modal('show');   
                     }
 
                     break;
                 case 2:
                     $('#myModalWarningBody').html(respuesta.mensaje);
-                    $('#myModalWarning').modal('show');
+                    $('#myModalWarning').modal('show');            
                     break;
                 default:
                     alert("Se ha producido un error");
@@ -227,18 +227,18 @@ function mostrarMenuUsuario(usuario) {
 
 }
 
-$(document).ready(function () {
+$(document).ready(function (){
 
     cargarMenu();
-
+    
     cargarOptionUsuarios();
-    $("#usuarios").chosen({ width: "100%" });
+    $("#usuarios").chosen({width: "100%"});
 
-    $("#limpiarFormGuardarPermisos").click(function () {
+    $("#limpiarFormGuardarPermisos").click(function (){
         limpiarFormPermisos();
     });
 
-    $("#formUsuarios").submit(function () {
+    $("#formUsuarios").submit(function (){
         limpiarFormPermisos();
 
         var usuario = $("#usuarios option:selected").val();
@@ -250,22 +250,22 @@ $(document).ready(function () {
         return false;
     });
 
-    $("#formGuardarPermisos").submit(function () {
+    $("#formGuardarPermisos").submit(function (){
         var usuario = $("#usuario").val();
 
-        if (usuario != '') {
+        if( usuario != '' ){
 
             var menuChekeado = [];
             var existeMenu = false;
 
-            $(".menu_sys").each(function () {
+            $(".menu_sys").each(function(){
                 existeMenu = true;
                 var este_menu = this;
                 var valor = este_menu.value;
 
-                var checkeado = ($(este_menu).is(":checked") || $(este_menu).prop("indeterminate") ? 1 : 0);
+                var checkeado = ( $(este_menu).is(":checked") || $(este_menu).prop("indeterminate") ? 1 : 0 );
 
-                if (checkeado == 1) {
+                if(checkeado == 1){
                     menuChekeado.push(valor);
                 }
 
@@ -273,31 +273,31 @@ $(document).ready(function () {
 
             //console.log(menuChekeado);
 
-            if (existeMenu) {
+            if(existeMenu){
 
                 $.ajax({
                     async: false,
                     type: "POST",
                     url: "util/accesos/gestion.php",
                     data: {
-                        usuario: usuario,
-                        menuChekeado: menuChekeado
+                        usuario:usuario,
+                        menuChekeado:menuChekeado
                     },
                     dataType: 'json',
                     //beforeSend: function(){},
-                    error: function (request, status, error) {
+                    error: function(request, status, error){
                         alert(request.responseText);
                     },
-                    success: function (respuesta) {
-                        switch (respuesta.estado) {
+                    success: function(respuesta){
+                        switch(respuesta.estado){
                             case 1:
                                 $('#myModalSuccessBody').html(respuesta.mensaje);
                                 $('#myModalSuccess').modal('show');
-                                limpiarFormPermisos();
+                                limpiarFormPermisos();            
                                 break;
                             case 2:
                                 $('#myModalWarningBody').html(respuesta.mensaje);
-                                $('#myModalWarning').modal('show');
+                                $('#myModalWarning').modal('show');            
                                 break;
                             default:
                                 alert("Se ha producido un error");
@@ -306,14 +306,14 @@ $(document).ready(function () {
                     }
                 });
 
-            } else {
+            }else{
                 $('#myModalWarningBody').html("No se cargo el menú");
-                $('#myModalWarning').modal('show');
+                $('#myModalWarning').modal('show'); 
             }
 
-        } else {
+        }else{
             $('#myModalWarningBody').html("Debe seleccionar un usuario");
-            $('#myModalWarning').modal('show');
+            $('#myModalWarning').modal('show'); 
         }
 
         return false;

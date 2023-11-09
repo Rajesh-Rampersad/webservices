@@ -1,10 +1,8 @@
 <h1><?php echo $varAcceso['nombre']; ?></h1>
-
 <ul class="nav nav-tabs nav-justified">
     <li class="active"><a data-toggle="tab" href="#home">Visualizar</a></li>
     <li><a data-toggle="tab" href="#menu1">Gestión</a></li>
 </ul>
-
 <div class="tab-content">
     <div id="home" class="row tab-pane fade in active">
         <div class="col-md-12">
@@ -13,12 +11,10 @@
                     <button type="button" class="btn btn-block btn-primary" id="consultar">Consultar</button>
                 </div>
             </div>
-
             <div class="row">
                 <div class="col-md-12">
                     <div id="cargando" class="text-center"></div>
                 </div>
-
                 <div id="cntTabla" class="col-md-12">
                     <div class="table-responsive">
                         <table id="tablaUsuarios" class="table cell-border stripe display" width="100%">
@@ -38,7 +34,6 @@
             </div>
         </div>
     </div>
-
     <div id="menu1" class="row tab-pane fade">
         <br>
         <div class="col-md-12">
@@ -48,7 +43,6 @@
                     <li>Al crear un usuario, se establecera (<?php echo $parametro['claveusuario'];?>)</li>
                 </ul>
             </div>
-
             <form role="form" id="formUsuario">
                 <div class="row">
                     <div class="col-md-6">
@@ -61,7 +55,6 @@
                             <input type="text" id="nombre" maxlength="150" class="form-control" required>
                         </div>
                     </div>
-
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="tipo_usuario">Tipo usuario</label>
@@ -71,14 +64,12 @@
                                 <option value="CLIENTE">CLIENTE</option>
                             </select>
                         </div>
-
                         <div class="form-group">
                             <label for="email">Email (*)</label>
                             <input type="email" id="email" maxlength="100" class="form-control" required>
                         </div>
                     </div>
                 </div>
-
                 <div class="row">
                     <div class="col-md-6 form-group">
                         <button type="reset" id="limpiarFormUsuario" class="btn btn-block btn-info">Nuevo</button>
